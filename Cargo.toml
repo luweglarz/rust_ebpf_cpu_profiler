@@ -1,0 +1,2 @@
+[workspace]
+members = ["xtask", "rust-cpu-profiler", "rust-cpu-profiler-common"]

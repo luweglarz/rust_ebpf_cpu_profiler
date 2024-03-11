@@ -1,0 +1,20 @@
+[package]
+name = "rust-cpu-profiler"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+aya = { git = "https://github.com/aya-rs/aya", features = ["async_tokio"] }
+aya-log = { git = "https://github.com/aya-rs/aya" }
+rust-cpu-profiler-common = { path = "../rust-cpu-profiler-common", features = ["user"] }
+anyhow = "1"
+env_logger = "0.11.2"
+libc = "0.2"
+log = "0.4"
+tokio = { version = "1.25", features = ["macros", "rt", "rt-multi-thread", "net", "signal", ] }
+
+
+[[bin]]
+name = "rust-cpu-profiler"
+path = "src/main.rs"
