@@ -37,7 +37,6 @@ fn try_rust_cpu_profiler(ctx: PerfEventContext) -> Result<u32, u32> {
                 let ustack_ptr = (*buf_ptr).ustack.as_mut_ptr();
                 (*buf_ptr).kstack_size = bpf_get_stack(ctx.as_ptr(), kstack_ptr as *mut c_void, size_of_val(&(*buf_ptr).kstack) as u32, 0);
                 (*buf_ptr).ustack_size = bpf_get_stack(ctx.as_ptr(), ustack_ptr as *mut c_void, size_of_val(&(*buf_ptr).ustack) as u32, BPF_F_USER_STACK.into());
-
         }; 
         buf.submit(2);
     }

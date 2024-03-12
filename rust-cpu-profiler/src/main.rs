@@ -60,15 +60,21 @@ async fn main() -> Result<(), anyhow::Error> {
             let item_data: &[u8] = item.deref();
     
             if item_data.len() == size_of::<StackEvent>() {
-                let my_struct: &StackEvent = unsafe { std::mem::transmute(item_data.as_ptr()) };
+                let stack_event: &StackEvent = unsafe { std::mem::transmute(item_data.as_ptr()) };
                 
-                let comm = match std::str::from_utf8(&my_struct.comm) {
-                    Ok(s) => s.to_string(),
-                    Err(_) => {
-                        String::new()
-                    }
-                };
-                println!("comm: {}, cpu_id: {}", comm, my_struct.cpu_id);
+                symbol_resolver::resolve_sym(stack_event);
+                // let comm = match std::str::from_utf8(&stack_event.comm) {
+                //     Ok(s) => s.to_string(),
+                //     Err(_) => {
+                //         String::new()
+                //     }
+                // };
+                // println!("comm: {}, cpu_id: {}", comm, my_struct.cpu_id);
+                // if my_struct.kstack_size > 0{
+                //     for sym in my_struct.kstack{
+                //         println!("sym: {}", sym);
+                //     }
+                // }
             } else {
                 println!("Error: Data length doesn't match struct size");
             }
