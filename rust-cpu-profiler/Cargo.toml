@@ -12,8 +12,9 @@ anyhow = "1"
 env_logger = "0.11.2"
 libc = "0.2"
 log = "0.4"
-tokio = { version = "1.25", features = ["macros", "rt", "rt-multi-thread", "net", "signal", ] }
+tokio = { version = "1.25", features = ["macros", "rt", "rt-multi-thread", "net", "signal",] }
 blazesym = "0.2.0-alpha.11"
+inferno = "0.11.19"
 
 [[bin]]
 name = "rust-cpu-profiler"

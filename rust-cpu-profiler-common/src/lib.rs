@@ -1,5 +1,6 @@
 #![no_std]
 
+
 // https://elixir.bootlin.com/linux/v4.18/source/include/linux/sched.h, line 207
 pub const TASK_COMM_LEN: usize = 16;
 
@@ -13,5 +14,5 @@ pub struct StackEvent {
     pub kstack_size: i64,
     pub ustack_size: i64,
     pub kstack: [u64; MAX_STACK_DEPTH],
-    pub ustack: [u64; MAX_STACK_DEPTH]
+    pub ustack: [u64; MAX_STACK_DEPTH],
 }
